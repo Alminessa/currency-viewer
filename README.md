@@ -15,20 +15,27 @@ CurrencyViewer - сервис курсов валют
 Как развернуть проект:
 
 1. Клонировать репозиторий
-   ```bash
-  git clone https://github.com/Alminessa/currency-viewer.git
-  cd currency-viewer
+   
+    ```bash
+   $ git clone https://github.com/Alminessa/currency-viewer.git
+   $ cd currency-viewer
 2. Создать виртуальное окружение и установить зависимости:
-  python -m venv venv
-  source venv/bin/activate      # для Linux/Mac
-  venv\Scripts\activate         # для Windows
-  pip install -r requirements.txt
+
+    ```bash
+   $ python -m venv venv
+    
+   $ source venv/bin/activate      # для Linux/Mac
+   $ venv\Scripts\activate         # для Windows
+    
+   $ pip install -r requirements.txt
 3. Настроить базу данных PostgreSQL:
   - Создайте базу данных currency_db
   - Создайте пользователя (например, currency_user) с паролем
   - Выдайте права на схему public (инструкция в pgAdmin)
   - Пропишите параметры подключения в файле config.py
-    Пример config.py:
+
+     ```bash
+    # Пример config.py:
       DB_HOST = "localhost"
       DB_PORT = 5432
       DB_NAME = "currency_db"
@@ -36,16 +43,22 @@ CurrencyViewer - сервис курсов валют
       DB_PASSWORD = "ваш_реальный_пароль"
       CBR_API_URL = "https://www.cbr-xml-daily.ru/daily_json.js"
 4. Запустить приложение:
-  uvicorn main:app --reload --host 0.0.0.0 --port 8000
-    Сервис запустится по адресу http://127.0.0.1:8000.
-    Документация Swagger доступна на http://127.0.0.1:8000/docs.
-  Примеры запросов:
-  - Получить все курсы на сегодня:
-    curl http://127.0.0.1:8000/rates
-  - Конвертировать 100 USD в EUR:
-    curl "http://127.0.0.1:8000/convert?from=USD&to=EUR&amount=100"
-  - Принудительно обновить курсы в БД:
-    curl -X POST http://127.0.0.1:8000/update
+   
+    ```bash
+   $ uvicorn main:app --reload --host 0.0.0.0 --port 8000
+Сервис запустится по адресу http://127.0.0.1:8000.
+Документация Swagger доступна на http://127.0.0.1:8000/docs.
+
+   Примеры запросов:
+   - Получить все курсы на сегодня:
+       ```bash
+      $ curl http://127.0.0.1:8000/rates
+   - Конвертировать 100 USD в EUR:
+       ```bash
+      $ curl "http://127.0.0.1:8000/convert?from=USD&to=EUR&amount=100"
+   - Принудительно обновить курсы в БД:
+       ```bash
+      $ curl -X POST http://127.0.0.1:8000/update
 
 
 Как это работает:
@@ -57,7 +70,9 @@ CurrencyViewer - сервис курсов валют
 4. Все эндпоинты возвращают данные в формате JSON, документация генерируется автоматически (Swagger).
 
 
+
 Пример конвертации из USD в RUB:
+
 ![Swagger UI](docs/swagger.png)
 
 Контакты:
