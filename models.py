@@ -1,6 +1,7 @@
 # models.py - модели данных для ответов API
 
 from pydantic import BaseModel, Field
+from pydantic.config import ConfigDict
 
 class CurrencyOut(BaseModel):
     code: str
@@ -13,9 +14,10 @@ class ConvertOut(BaseModel):
     to: str
     amount: float
     result: float
-
-    class Config:
-        populate_by_name = True
+    
+    model_config = ConfigDict(
+        populate_by_name=True
+    )
 
 class MessageOut(BaseModel):
     message: str

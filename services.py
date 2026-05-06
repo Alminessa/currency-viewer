@@ -35,6 +35,12 @@ def update_rates_in_db():           # Сохранение актуальных 
     rates = fetch_cbr_rates()
     today = date.today()
 
+    rates['RUB'] = {
+        "name": "Российский рубль",
+        "rate": 1.0,
+        "nominal": 1
+    }
+    
     conn = get_connection()
     cur = conn.cursor()
 
