@@ -1,0 +1,28 @@
+# Виртуальное окружение
+venv/
+env/
+.env
+
+# Файлы Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Базы данных и логи
+*.db
+*.log
+
+# Настройки IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Системные файлы Windows
+Thumbs.db
+Desktop.ini
